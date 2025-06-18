@@ -1,18 +1,22 @@
-<?php
-session_start();
-if (!isset($_SESSION["user_id"])) {
-    header("Location: login.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
 </head>
 <body>
-    <h2>Welcome, <?php echo htmlspecialchars($_SESSION["username"]); ?>!</h2>
+    <h2>Welcome, <span id="username"></span>!</h2>
     <a href="logout.php">Logout</a>
+
+    <script>
+        // Fetch the logged-in user's data from InfinityFree backend
+        fetch('https://areastern.infinityfreeapp.com//get_user.php', {
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("username").textContent = data.username;
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+    </script>
 </body>
 </html>
