@@ -5,11 +5,11 @@
 </head>
 <body>
     <h2>Welcome, <span id="username"></span>!</h2>
-    <a href="index.php">Logout</a>
+    <a href="index.php">Index</a>
 
     <script>
         // Fetch the logged-in user's data from InfinityFree backend
-        fetch('https://areastern.infinityfreeapp.com//get_user.php', {
+        fetch('https://areastern.infinityfreeapp.com/get_user.php', {
             method: 'GET',
         })
         .then(response => response.json())
